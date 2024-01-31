@@ -50,7 +50,7 @@ body{
     top: 0;
 }
 
-.img:last-of-type{
+.img:first-of-type{
     opacity: 1;
 }
 
@@ -80,7 +80,7 @@ h1{
     width: 100%;
 }
 
-h1:last-of-type{
+h1:first-of-type{
     opacity: 1;
 }
 

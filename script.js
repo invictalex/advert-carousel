@@ -1,10 +1,46 @@
-const images = document.querySelectorAll('.img');
-const headings = document.querySelectorAll('h1');
+const imageContainer = document.querySelector(".img--container");
+const headingContainer = document.querySelector(".heading--container");
 const prevBtn = document.querySelector('.previous');
 const nextBtn = document.querySelector('.next');
 
+const itemData = [
+    {
+        heading: "Mini Alexa in Amethyst",
+        image: "images/1.png"
+    },
+    {
+        heading: "Medium Lily in Sapphire",
+        image: "images/2.png"
+    },
+    {
+        heading: "Micro Bags",
+        image: "images/3.png"
+    },
+    {
+        heading: "Small Check Merino Wool Scarf",
+        image: "images/4.png"
+    }
+]
+
+itemData.forEach(item => {
+    const image = document.createElement("div");
+    image.classList.add("img");
+    image.style.backgroundImage = `url(${item.image})`;
+    imageContainer.append(image);
+
+    const heading = document.createElement("h1");
+    heading.textContent = item.heading;
+    headingContainer.append(heading);
+})
+
+const images = document.querySelectorAll('.img');
+const headings = document.querySelectorAll('h1');
+
+
 let isPaused = false;
-const itemCount = images.length;
+let itemCount = itemData.length;
+let currentIndex = 0; //sets index to front-showing image
+let isAnimating = false;
 
 const duration = {
     default: 1.5,
@@ -12,8 +48,6 @@ const duration = {
     pause: 3
 }
 
-let currentIndex = itemCount-1; //sets index to front-showing image
-let isAnimating = false;
 
 function showItem(index) {
 
